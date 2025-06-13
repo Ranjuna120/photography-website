@@ -1,3 +1,5 @@
+import '../style/Home.css';
+
 export default function Home() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white text-center p-4">
@@ -9,3 +11,6 @@ export default function Home() {
     </section>
   );
 }
+
+
+
