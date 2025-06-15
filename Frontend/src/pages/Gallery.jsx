@@ -1,10 +1,11 @@
+import '../style/Gallery.css';
 import PhotoCard from '../components/PhotoCard';
 
 export default function Gallery() {
   return (
-    <section className="p-8 text-white bg-gray-800 min-h-screen">
-      <h2 className="text-3xl font-bold mb-6">Gallery</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <section className="gallery-section">
+      <h2 className="gallery-title">Gallery</h2>
+      <div className="gallery-grid">
 
         <PhotoCard
           title="Portrait Series"

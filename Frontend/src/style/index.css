@@ -1,0 +1,102 @@
+/* src/style/index.css */
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Default (Dark Mode) Theme Variables */
+:root {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --nav-bg: #111;
+  --nav-text: #fff;
+  --nav-hover: #4ade80;
+  --card-bg: #1f2937;
+  --card-text: #f5f5f5;
+  --footer-bg: #111827;
+  --footer-text: #9ca3af;
+}
+
+/* Light Mode Theme Variables */
+body[data-theme='light'] {
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+  --nav-bg: #f9fafb;
+  --nav-text: #1f2937;
+  --nav-hover: #2563eb;
+  --card-bg: #e5e7eb;
+  --card-text: #1f2937;
+  --footer-bg: #e5e7eb;
+  --footer-text: #374151;
+}
+
+/* Base styles for body */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* List styles reset */
+ul {
+  list-style: none;
+}
+
+/* Navbar styles (optional here, or in Navbar.css) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+}
+
+.navbar .links a {
+  margin-right: 1rem;
+  color: var(--nav-text);
+}
+
+.navbar .links a:hover {
+  color: var(--nav-hover);
+}
+
+.navbar .theme-toggle button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--nav-text);
+  background: transparent;
+  color: var(--nav-text);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .theme-toggle button.active {
+  background-color: var(--nav-hover);
+  color: #fff;
+  border-color: var(--nav-hover);
+}
+
+/* Footer styles */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

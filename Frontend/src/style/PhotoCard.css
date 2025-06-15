@@ -1,0 +1,34 @@
+.photo-card {
+  background-color: #1f2937; /* Tailwind's gray-800 */
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 12rem; /* equivalent to h-48 */
+  object-fit: cover;
+}
+
+.photo-card-content {
+  padding: 1rem;
+}
+
+.photo-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.photo-card-description {
+  color: #9ca3af; /* Tailwind's gray-400 */
+  font-size: 0.875rem;
+}
