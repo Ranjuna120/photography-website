@@ -11,13 +11,8 @@ import img7 from '../images/img7.jpg';
 import img8 from '../images/img8.jpg';
 import img9 from '../images/img9.jpg';
 import img10 from '../images/img10.jpg';
- 
 
-const images = [
-  img1, img2, img3, img4, img5,
-  img6, img7, img8, img9, img10,
-  
-];
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 export default function Home() {
   const [selectedImg, setSelectedImg] = useState(null);
@@ -28,45 +23,49 @@ export default function Home() {
     setCurrentIndex(index);
   };
 
-  const closeModal = () => {
-    setSelectedImg(null);
-  };
+  const closeModal = () => setSelectedImg(null);
 
-  const nextImage = () => {
+  const nextImage = (e) => {
+    e.stopPropagation();
     const newIndex = (currentIndex + 1) % images.length;
     setSelectedImg(images[newIndex]);
     setCurrentIndex(newIndex);
   };
 
-  const prevImage = () => {
+  const prevImage = (e) => {
+    e.stopPropagation();
     const newIndex = (currentIndex - 1 + images.length) % images.length;
     setSelectedImg(images[newIndex]);
     setCurrentIndex(newIndex);
   };
 
   return (
-    <section className="home-container">
-      <header className="hero">
-        <h1 className="hero-title">Welcome to PhotoGallery</h1>
-        <p className="hero-subtitle">Capturing life’s beauty through the lens.</p>
+    <div className="home-container">
+      <header className="page-header">
+        <h1>Welcome to PhotoGallery</h1>
+        <p>Capturing life’s beauty through the lens.</p>
       </header>
 
-      <div className="gallery">
+      <div className="gallery-grid">
         {images.map((img, index) => (
-          <div key={index} className="gallery-item" onClick={() => openModal(index)}>
-            <img src={img} alt={`Gallery ${index + 1}`} />
-          </div>
+          <img
+            key={index}
+            src={img}
+            alt={`Gallery ${index + 1}`}
+            className="gallery-image"
+            onClick={() => openModal(index)}
+          />
         ))}
       </div>
 
       {selectedImg && (
         <div className="modal" onClick={closeModal}>
-          <span className="close">&times;</span>
-          <img className="modal-content" src={selectedImg} alt="Enlarged view" />
-          <button className="prev" onClick={(e) => { e.stopPropagation(); prevImage(); }}>❮ Prev</button>
-          <button className="next" onClick={(e) => { e.stopPropagation(); nextImage(); }}>Next ❯</button>
+          <span className="close" onClick={closeModal}>&times;</span>
+          <img className="modal-content" src={selectedImg} alt="Large view" />
+          <button className="prev" onClick={prevImage}>❮</button>
+          <button className="next" onClick={nextImage}>❯</button>
         </div>
       )}
-    </section>
+    </div>
   );
 }
