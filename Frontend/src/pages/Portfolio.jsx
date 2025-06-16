@@ -1,18 +1,19 @@
 import React from 'react';
 import '../style/Portfolio.css';
+import Portrait from '../images/Portrait.jpg';
+import nature from '../images/nature.jpg';
+import event from '../images/event.jpg';
 
 export default function Portfolio() {
   return (
     <section>
-      <h2>My Portfolio</h2>
-
       <div className="grid">
+        {/* 👇 Header as first grid item */}
+        <h1 className="portfolio-header">My Portfolio</h1>
+
         {/* Portfolio Item 1 */}
         <div className="portfolio-item">
-          <img
-            src="https://via.placeholder.com/400x300"
-            alt="Project 1"
-          />
+          <img src={Portrait} alt="Portrait Series" />
           <div className="content">
             <h3>Portrait Series</h3>
             <p>Intimate portraits capturing emotion and personality.</p>
@@ -21,10 +22,7 @@ export default function Portfolio() {
 
         {/* Portfolio Item 2 */}
         <div className="portfolio-item">
-          <img
-            src="https://via.placeholder.com/400x300"
-            alt="Project 2"
-          />
+          <img src={nature} alt="Nature Collection" />
           <div className="content">
             <h3>Nature Collection</h3>
             <p>Stunning landscapes and wildlife in their natural beauty.</p>
@@ -33,10 +31,7 @@ export default function Portfolio() {
 
         {/* Portfolio Item 3 */}
         <div className="portfolio-item">
-          <img
-            src="https://via.placeholder.com/400x300"
-            alt="Project 3"
-          />
+          <img src={event} alt="Event Highlights" />
           <div className="content">
             <h3>Event Highlights</h3>
             <p>Capturing moments from weddings, festivals, and live events.</p>

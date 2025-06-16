@@ -2,21 +2,15 @@ section {
   background-color: var(--bg-color);
   color: var(--text-color);
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2rem 1rem;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-h2 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  text-align: center;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1.5rem;
+  justify-items: center;
 }
 
 @media (min-width: 640px) {
@@ -31,40 +25,49 @@ h2 {
   }
 }
 
+/* 👇 Header styled to span full row */
+.portfolio-header {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
 .portfolio-item {
   background-color: var(--card-bg);
   color: var(--card-text);
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 500px;
 }
 
 .portfolio-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
 }
 
 .portfolio-item img {
   width: 100%;
-  height: 12rem;
+  height: 30rem;
   object-fit: cover;
 }
 
 .portfolio-item .content {
-  padding: 1rem;
+  padding: 0.75rem;
+  text-align: center;
 }
 
 .portfolio-item h3 {
-  font-size: 1.25rem;
+  font-size: 2.125rem;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
 .portfolio-item p {
-  font-size: 0.875rem;
-  color: var(--text-color);
+  font-size: 1.00rem;
   opacity: 0.7;
 }
