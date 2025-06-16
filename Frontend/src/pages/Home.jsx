@@ -11,8 +11,14 @@ import img7 from '../images/img7.jpg';
 import img8 from '../images/img8.jpg';
 import img9 from '../images/img9.jpg';
 import img10 from '../images/img10.jpg';
+import img11 from '../images/img11.jpg';
+import img12 from '../images/img12.jpg';
+import img13 from '../images/img13.jpg';
+import img14 from '../images/img14.jpg';
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,img11,
+  img12,img13,img14,
+];
 
 export default function Home() {
   const [selectedImg, setSelectedImg] = useState(null);
