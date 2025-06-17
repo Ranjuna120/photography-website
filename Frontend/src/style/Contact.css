@@ -39,6 +39,7 @@
 }
 
 .contact-info h2 {
+  text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--nav-text);
