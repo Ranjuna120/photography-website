@@ -96,3 +96,62 @@ body {
 .prev:hover, .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+
+
+
+
+.hero {
+  height: 80vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content button {
+  padding: 0.6rem 1.2rem;
+  background-color: #4ade80;
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* .about {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #111;
+  color: #f5f5f5;
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.about button {
+  padding: 0.5rem 1.2rem;
+  background-color: #4ade80;
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} */
