@@ -12,8 +12,9 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/gallery">Gallery</Link>
         <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
         <Link to="/portfolio">Portfolio</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/blog">Blog</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
       </div>
