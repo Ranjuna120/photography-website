@@ -1,5 +1,6 @@
 import '../style/Footer.css';
 import profileImg from '../images/profileImg.jpg'; // replace with your image
+import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -10,11 +11,6 @@ export default function Footer() {
           <img src={profileImg} alt="Profile" className="profile-img" />
           <h3 className="profile-name">@RIVITHRANJUNA</h3>
           <p className="profile-role">Photographer & Visual Storyteller</p>
-          <div className="social-icons">
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-spotify"></i></a>
-          </div>
         </div>
 
         {/* Subscribe Section */}
@@ -26,6 +22,19 @@ export default function Footer() {
             <button type="button">
               <i className="fas fa-envelope"></i>
             </button>
+          </div>
+
+          {/* ✅ Social Icons moved here */}
+          <div className="social-icons">
+            <a href="https://www.instagram.com/r_i_v_i_t_h/" target="_blank" rel="noopener noreferrer">
+              <FaInstagram size={24} />
+            </a>
+            <a href="https://www.facebook.com/rivith.ranjuna/" target="_blank" rel="noopener noreferrer">
+              <FaFacebookF size={24} />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <FaTwitter size={24} />
+            </a>
           </div>
         </div>
       </div>
