@@ -28,23 +28,13 @@
 .profile-name {
   font-size: 1.25rem;
   font-weight: bold;
+  color: #f5f5f5;
 }
 
 .profile-role {
   font-size: 0.9rem;
   color: #9ca3af;
   margin-bottom: 0.75rem;
-}
-
-.social-icons a {
-  color: #d1d5db;
-  margin: 0 0.4rem;
-  font-size: 1.2rem;
-  transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #4ade80;
 }
 
 .footer-subscribe {
@@ -72,6 +62,7 @@
   border-radius: 5px;
   overflow: hidden;
   background-color: #111;
+  margin-bottom: 1rem; /* ✅ spacing before social icons */
 }
 
 .subscribe-input input {
@@ -79,7 +70,7 @@
   padding: 0.5rem 0.75rem;
   background-color: transparent;
   border: none;
-  color: #f5f5f5;
+  /* color: #f5f5f5; */
 }
 
 .subscribe-input input::placeholder {
@@ -94,11 +85,27 @@
   cursor: pointer;
 }
 
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: #d1d5db;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4ade80;
+}
+
 .footer-bottom {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #9ca3af;
   border-top: 1px solid #514f4f;
   padding-top: 1rem;
 }
