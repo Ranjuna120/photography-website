@@ -10,6 +10,9 @@ import Register from './pages/Register';
 import Portfolio from './pages/Portfolio';
 import Portrait from './pages/Portrait';
 
+import Nature from './pages/Nature'; 
+import Event from './pages/Event'; 
+
 function App() {
   return (
     <Router>
@@ -25,6 +28,9 @@ function App() {
 
         <Route path="/portrait" element={<Portrait />} />
         {/* <Route path="/portfolio/portrait" element={<Portrait />} /> */}
+
+        <Route path="/nature" element={<Nature />} />
+        <Route path="/event" element={<Event />} />
       </Routes>
       <Footer />
     </Router>
