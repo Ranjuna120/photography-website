@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/ThemeContext'; // change the theme (e.g., dark mode / light mode)
 import '../style/Navbar.css';
 
 export default function Navbar() {
