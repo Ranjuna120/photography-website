@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../style/Home.css';
 
 import img1 from '../images/img1.jpg';
@@ -16,6 +17,8 @@ import img12 from '../images/img12.jpg';
 import img13 from '../images/img13.jpg';
 import img14 from '../images/img14.jpg';
 
+import heroImg from '../images/heroImg.jpg'; // NEW featured image
+
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,img11,
   img12,img13,img14,
 ];
@@ -23,6 +26,7 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,img1
 export default function Home() {
   const [selectedImg, setSelectedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const openModal = (index) => {
     setSelectedImg(images[index]);
@@ -47,11 +51,21 @@ export default function Home() {
 
   return (
     <div className="home-container">
+      {/* ✅ Hero Section */}
+      <section className="hero" style={{ backgroundImage: `url(${heroImg})` }}>
+        <div className="hero-content">
+          <h1>Explore My World of Photography</h1>
+          <button onClick={() => navigate('/portfolio')}>View Portfolio</button>
+        </div>
+      </section>
+
+      {/* Existing Header */}
       <header className="page-header">
         <h1>Welcome to PhotoGallery</h1>
         <p>Capturing life’s beauty through the lens.</p>
       </header>
 
+      {/* Existing Gallery */}
       <div className="gallery-grid">
         {images.map((img, index) => (
           <img
@@ -72,6 +86,14 @@ export default function Home() {
           <button className="next" onClick={nextImage}>❯</button>
         </div>
       )}
+
+      {/* ✅ About Section */}
+      {/* <section className="about">
+        <h2>About Me</h2>
+        <p>I’m Rivith Ranjuna, a passionate photographer specializing in portraits, nature, and events. 
+          I believe photography tells stories the eye can’t always see.</p>
+        <button onClick={() => navigate('/contact')}>Contact Me</button>
+      </section> */}
     </div>
   );
 }
