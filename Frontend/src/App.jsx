@@ -13,6 +13,8 @@ import Portrait from './pages/Portrait';
 import Nature from './pages/Nature'; 
 import Event from './pages/Event'; 
 
+import Blog from './pages/Blog';
+
 function App() {
   return (
     <Router>
@@ -31,6 +33,8 @@ function App() {
 
         <Route path="/nature" element={<Nature />} />
         <Route path="/event" element={<Event />} />
+
+        <Route path="/blog" element={<Blog />} />
       </Routes>
       <Footer />
     </Router>
