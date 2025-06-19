@@ -62,7 +62,7 @@
   border-radius: 5px;
   overflow: hidden;
   background-color: #111;
-  margin-bottom: 1rem; /* ✅ spacing before social icons */
+  margin-bottom: 1rem; /* ✅ spacing before social icons(modify) */
 }
 
 .subscribe-input input {
