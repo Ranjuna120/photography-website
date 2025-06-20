@@ -16,6 +16,7 @@ import Event from './pages/Event';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import AddBlog from './pages/AddBlog';
+import AddOrEditBlog from './pages/AddOrEditBlog';
 
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/add-blog" element={<AddBlog />} />
+
+        <Route path="/add-blog" element={<AddOrEditBlog />} />
+        <Route path="/edit-blog/:id" element={<AddOrEditBlog />} />
 
       </Routes>
       <Footer />
