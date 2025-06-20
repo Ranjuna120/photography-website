@@ -1,25 +1,20 @@
-// ✅ Blog.jsx
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../style/Blog.css';
 
 export default function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const res = await fetch('http://localhost:5000/api/blogs');
         const data = await res.json();
-        if (res.ok) {
-          setBlogs(data);
-        } else {
-          setError(data.error || 'Failed to fetch blogs');
-        }
+        setBlogs(data);
       } catch (err) {
-        setError('Error connecting to server');
+        console.error('Error fetching blogs:', err);
       } finally {
         setLoading(false);
       }
@@ -28,9 +23,6 @@ export default function Blog() {
     fetchBlogs();
   }, []);
 
-  if (loading) return <div className="blog-container">Loading blogs...</div>;
-  if (error) return <div className="blog-container">{error}</div>;
-
   return (
     <div className="blog-container">
       <header className="blog-header">
@@ -38,18 +30,23 @@ export default function Blog() {
         <p>Stories, Techniques & Adventures from Behind the Camera</p>
       </header>
 
-      <div className="blog-grid">
-        {blogs.map((post) => (
-          <div key={post._id} className="blog-card">
-            <h2>{post.title}</h2>
-            <p className="blog-date">{new Date(post.date).toLocaleDateString()}</p>
-            <p>{post.content.substring(0, 100)}...</p>
-            <Link className="read-more" to={`/blog/${post._id}`}>
-              Read More
-            </Link>
-          </div>
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading blogs...</p>
+      ) : blogs.length === 0 ? (
+        <p>No blog posts available.</p>
+      ) : (
+        <div className="blog-grid">
+          {blogs.map((post) => (
+            <div key={post._id} className="blog-card">
+              <h2>{post.title}</h2>
+              <p className="blog-date">{new Date(post.date).toLocaleDateString()}</p>
+              <button className="read-more" onClick={() => navigate(`/blog/${post._id}`)}>
+                Read More
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
