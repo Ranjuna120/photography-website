@@ -14,6 +14,8 @@ import Nature from './pages/Nature';
 import Event from './pages/Event'; 
 
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
         <Route path="/event" element={<Event />} />
 
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
       </Routes>
       <Footer />
     </Router>
