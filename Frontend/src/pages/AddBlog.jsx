@@ -1,26 +1,33 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../style/Blog.css'; // ✅ Reuse existing styles
+import '../style/Blog.css';
 
 export default function AddBlog() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [media, setMedia] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const handleFileChange = (e) => {
+    setMedia(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', content);
+    if (media) formData.append('media', media);
+
     try {
       const res = await fetch('http://localhost:5000/api/blogs', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title, content })
+        body: formData,
       });
 
       if (!res.ok) {
@@ -42,30 +49,35 @@ export default function AddBlog() {
         <h1>Add New Blog Post</h1>
       </header>
 
-      <form onSubmit={handleSubmit} className="blog-form">
-        <div>
-          <input
-            type="text"
-            placeholder="Blog Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            className="blog-input"
-          />
-        </div>
-        <div>
-          <textarea
-            placeholder="Blog Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-            className="blog-textarea"
-            rows="8"
-          />
-        </div>
+      <form onSubmit={handleSubmit} className="blog-form" encType="multipart/form-data">
+        <input
+          type="text"
+          placeholder="Blog Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          className="blog-input"
+        />
+        <textarea
+          placeholder="Blog Content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+          className="blog-textarea"
+          rows="8"
+        />
+
+        <input
+          type="file"
+          accept="image/*,video/*"
+          onChange={handleFileChange}
+          className="blog-input"
+        />
+
         <button type="submit" className="read-more" disabled={loading}>
           {loading ? 'Adding...' : 'Add Blog'}
         </button>
+
         {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
       </form>
     </div>
