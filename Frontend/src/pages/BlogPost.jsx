@@ -6,20 +6,15 @@ export default function BlogPost() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const res = await fetch(`http://localhost:5000/api/blogs/${id}`);
         const data = await res.json();
-        if (res.ok) {
-          setPost(data);
-        } else {
-          setError(data.error || 'Failed to fetch blog post');
-        }
+        setPost(data);
       } catch (err) {
-        setError('Error connecting to server');
+        console.error('Error fetching blog post:', err);
       } finally {
         setLoading(false);
       }
@@ -28,9 +23,16 @@ export default function BlogPost() {
     fetchPost();
   }, [id]);
 
-  if (loading) return <div className="blog-container">Loading post...</div>;
-  if (error) return <div className="blog-container">{error}</div>;
-  if (!post) return <div className="blog-container">Post not found</div>;
+  if (loading) return <p className="blog-container">Loading...</p>;
+
+  if (!post) {
+    return (
+      <div className="blog-container">
+        <h2>Post not found</h2>
+        <Link to="/blog" className="read-more">← Back to Blog</Link>
+      </div>
+    );
+  }
 
   return (
     <div className="blog-container">
