@@ -1,27 +1,36 @@
+// ✅ Blog.jsx
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../style/Blog.css';
 
-const blogPosts = [
-  {
-    id: 1,
-    title: 'Behind the Lens: Capturing the Perfect Portrait',
-    date: 'June 15, 2025',
-    summary: 'Discover the techniques and stories behind my favorite portrait shoots.',
-  },
-  {
-    id: 2,
-    title: 'Top 5 Nature Photography Spots in Sri Lanka',
-    date: 'June 10, 2025',
-    summary: 'A guide to the most scenic landscapes for capturing breathtaking photos.',
-  },
-  {
-    id: 3,
-    title: 'How to Tell a Story Through Event Photography',
-    date: 'June 5, 2025',
-    summary: 'Tips for making every event photo a memorable moment.',
-  },
-];
-
 export default function Blog() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/blogs');
+        const data = await res.json();
+        if (res.ok) {
+          setBlogs(data);
+        } else {
+          setError(data.error || 'Failed to fetch blogs');
+        }
+      } catch (err) {
+        setError('Error connecting to server');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <div className="blog-container">Loading blogs...</div>;
+  if (error) return <div className="blog-container">{error}</div>;
+
   return (
     <div className="blog-container">
       <header className="blog-header">
@@ -30,12 +39,14 @@ export default function Blog() {
       </header>
 
       <div className="blog-grid">
-        {blogPosts.map((post) => (
-          <div key={post.id} className="blog-card">
+        {blogs.map((post) => (
+          <div key={post._id} className="blog-card">
             <h2>{post.title}</h2>
-            <p className="blog-date">{post.date}</p>
-            <p>{post.summary}</p>
-            <button className="read-more">Read More</button>
+            <p className="blog-date">{new Date(post.date).toLocaleDateString()}</p>
+            <p>{post.content.substring(0, 100)}...</p>
+            <Link className="read-more" to={`/blog/${post._id}`}>
+              Read More
+            </Link>
           </div>
         ))}
       </div>
