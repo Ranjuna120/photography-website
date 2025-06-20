@@ -15,6 +15,7 @@ import Event from './pages/Event';
 
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import AddBlog from './pages/AddBlog';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/add-blog" element={<AddBlog />} />
 
       </Routes>
       <Footer />
