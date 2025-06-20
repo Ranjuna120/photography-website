@@ -22,9 +22,40 @@ const getBlogById = async (req, res) => {
 const createBlog = async (req, res) => {
   try {
     const { title, content } = req.body;
-    const newBlog = new Blog({ title, content });
+
+    let mediaUrl = null;
+    let mediaType = null;
+
+    if (req.file) {
+      mediaUrl = `/uploads/${req.file.filename}`;
+      mediaType = req.file.mimetype.startsWith('video') ? 'video' : 'image';
+    }
+
+    const newBlog = new Blog({ title, content, mediaUrl, mediaType });
     await newBlog.save();
     res.status(201).json(newBlog);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+const updateBlog = async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const updates = { title, content };
+
+    if (req.file) {
+      updates.mediaUrl = `/uploads/${req.file.filename}`;
+      updates.mediaType = req.file.mimetype.startsWith('video') ? 'video' : 'image';
+    }
+
+    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, updates, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedBlog) return res.status(404).json({ message: 'Blog not found' });
+    res.json(updatedBlog);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -40,27 +71,10 @@ const deleteBlog = async (req, res) => {
   }
 };
 
-const updateBlog = async (req, res) => {
-  try {
-    const { title, content } = req.body;
-    const updatedBlog = await Blog.findByIdAndUpdate(
-      req.params.id,
-      { title, content },
-      { new: true, runValidators: true }
-    );
-    if (!updatedBlog) return res.status(404).json({ message: 'Blog not found' });
-    res.json(updatedBlog);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
-
-
 module.exports = {
   getAllBlogs,
   getBlogById,
   createBlog,
-  deleteBlog,
   updateBlog,
+  deleteBlog,
 };
