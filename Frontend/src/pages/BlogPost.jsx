@@ -41,6 +41,14 @@ export default function BlogPost() {
         <p className="blog-date">{new Date(post.date).toLocaleDateString()}</p>
       </header>
 
+      {post.mediaUrl && (
+        post.mediaType === 'video' ? (
+          <video src={`http://localhost:5000${post.mediaUrl}`} controls style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+        ) : (
+          <img src={`http://localhost:5000${post.mediaUrl}`} alt="Blog Media" style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }} />
+        )
+      )}
+
       <article className="blog-content">
         <p>{post.content}</p>
       </article>
