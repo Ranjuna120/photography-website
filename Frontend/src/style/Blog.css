@@ -30,12 +30,13 @@
   background-color: #1f2937;
   padding: 1.5rem;
   border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background-color: #111827; /* ✅ subtle darken on hover */
 }
 
 .blog-card h2 {
@@ -51,16 +52,40 @@
 
 .read-more {
   margin-top: 1rem;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1.2rem; /* ✅ slightly larger button */
   background-color: #4ade80;
   color: #111;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 600; /* ✅ better button text visibility */
+  transition: background-color 0.3s ease;
 }
+
+.read-more:hover {
+  background-color: #22c55e; /* ✅ subtle hover color for button */
+}
+
 .blog-content {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.1rem; /* ✅ slightly larger for readability */
+  line-height: 1.8;  /* ✅ improved readability */
   color: #d1d5db;
   margin-bottom: 2rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.2rem; /* ✅ spacing between paragraphs */
+}
+
+/* ✅ Add responsiveness for smaller screens */
+@media (max-width: 480px) {
+  .blog-header h1 {
+    font-size: 2rem;
+  }
+  .blog-card {
+    padding: 1rem;
+  }
+  .read-more {
+    padding: 0.4rem 1rem;
+  }
 }
