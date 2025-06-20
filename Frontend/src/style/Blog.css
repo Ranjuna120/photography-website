@@ -12,14 +12,26 @@
    
 }
 
+
+:root {
+  --color-text-primary: #0f172a;   /* Default: dark text (for light theme) */
+  --color-text-secondary: #475569; /* Default: muted (for light theme) */
+}
+
+body.dark {
+  --color-text-primary: #ffffff;   /* Light text (for dark theme) */
+  --color-text-secondary: #9ca3af; /* Muted gray for dark theme */
+}
+
+
 .blog-header h1 {
   font-size: 2.8rem;
   margin-bottom: 0.6rem;
-  color: #ffffff;
+  color: var(--color-text-primary);
 }
 
 .blog-header p {
-  color: #9ca3af;
+  color: var(--color-text-secondary);
   font-size: 1.15rem;
 }
 
