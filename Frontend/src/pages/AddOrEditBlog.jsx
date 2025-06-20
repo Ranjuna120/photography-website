@@ -5,6 +5,7 @@ export default function AddOrEditBlog() {
   const { id } = useParams();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [media, setMedia] = useState(null); // ✅ NEW: for image/video
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -26,7 +27,11 @@ export default function AddOrEditBlog() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const blogData = { title, content };
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', content);
+    if (media) formData.append('media', media); // ✅ append file
+
     const method = id ? 'PUT' : 'POST';
     const url = id
       ? `http://localhost:5000/api/blogs/${id}`
@@ -35,8 +40,7 @@ export default function AddOrEditBlog() {
     try {
       const res = await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(blogData),
+        body: formData, // ✅ formData for file upload
       });
 
       if (!res.ok) {
@@ -53,57 +57,21 @@ export default function AddOrEditBlog() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: '100vh', // ✅ full page height for vertical centering
-        display: 'flex',     // ✅ Flex for centering
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#0f172a',
-        padding: '2rem',
-        color: '#f5f5f5',
-        fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
-      }}
-    >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '500px',
-          backgroundColor: '#1f2937',
-          padding: '2rem',
-          borderRadius: '10px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-        }}
-      >
-        <h1 style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#ffffff' }}>
-          {id ? 'Edit Blog' : 'Add New Blog'}
-        </h1>
+    <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem', backgroundColor: '#0f172a', color: '#f5f5f5' }}>
+      <div style={{ width: '100%', maxWidth: '500px', backgroundColor: '#1f2937', padding: '2rem', borderRadius: '10px' }}>
+        <h1 style={{ textAlign: 'center', marginBottom: '1.5rem', color: '#ffffff' }}>{id ? 'Edit Blog' : 'Add New Blog'}</h1>
 
         {loading ? (
           <p style={{ textAlign: 'center', color: '#9ca3af' }}>Loading blog...</p>
         ) : (
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-            }}
-          >
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <input
               type="text"
               placeholder="Blog Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              style={{
-                padding: '0.8rem',
-                borderRadius: '5px',
-                border: '1px solid #374151',
-                backgroundColor: '#111827',
-                color: '#f5f5f5',
-                fontSize: '1rem',
-              }}
+              style={{ padding: '0.8rem', borderRadius: '5px', border: '1px solid #374151', backgroundColor: '#111827', color: '#f5f5f5' }}
             />
             <textarea
               placeholder="Blog Content"
@@ -111,16 +79,17 @@ export default function AddOrEditBlog() {
               onChange={(e) => setContent(e.target.value)}
               rows="6"
               required
-              style={{
-                padding: '0.8rem',
-                borderRadius: '5px',
-                border: '1px solid #374151',
-                backgroundColor: '#111827',
-                color: '#f5f5f5',
-                fontSize: '1rem',
-                resize: 'vertical',
-              }}
+              style={{ padding: '0.8rem', borderRadius: '5px', border: '1px solid #374151', backgroundColor: '#111827', color: '#f5f5f5' }}
             ></textarea>
+
+            {/* ✅ File input */}
+            <input
+              type="file"
+              accept="image/*,video/*"
+              onChange={(e) => setMedia(e.target.files[0])}
+              style={{ color: '#f5f5f5' }}
+            />
+
             <button
               type="submit"
               style={{
@@ -131,10 +100,7 @@ export default function AddOrEditBlog() {
                 borderRadius: '5px',
                 cursor: 'pointer',
                 fontWeight: 600,
-                transition: 'background-color 0.3s ease, transform 0.2s ease',
               }}
-              onMouseOver={(e) => (e.target.style.backgroundColor = '#22c55e')}
-              onMouseOut={(e) => (e.target.style.backgroundColor = '#4ade80')}
             >
               {id ? 'Update Blog' : 'Add Blog'}
             </button>
