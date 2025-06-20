@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/Blog.css';
 
+import { Link } from 'react-router-dom';
+
+
+
 export default function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,10 +29,26 @@ export default function Blog() {
 
   return (
     <div className="blog-container">
-      <header className="blog-header">
-        <h1>Photography Blog</h1>
-        <p>Stories, Techniques & Adventures from Behind the Camera</p>
-      </header>
+      <header className="blog-header" style={{ position: 'relative' }}>
+  <h1>Photography Blog</h1>
+  <p>Stories, Techniques & Adventures from Behind the Camera</p>
+
+  <Link
+    to="/add-blog"
+    className="read-more"
+    style={{
+      position: 'absolute',
+      right: '0',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      padding: '0.4rem 1rem',
+      fontSize: '0.9rem'
+    }}
+  >
+    ➕ Add New Blog
+  </Link>
+</header>
+
 
       {loading ? (
         <p>Loading blogs...</p>
@@ -46,6 +66,7 @@ export default function Blog() {
             </div>
           ))}
         </div>
+        
       )}
     </div>
   );
