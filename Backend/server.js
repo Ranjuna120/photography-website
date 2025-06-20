@@ -18,8 +18,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 const photoRoutes = require('./routes/photos');
 const contactRoutes = require('./routes/contacts');
+// const blogRoutes = require('./routes/blogRoutes');
 app.use('/api/photos', photoRoutes);
 app.use('/api/contacts', contactRoutes);
+// app.use('/api/blogs', blogRoutes);
+
 
 // Server port
 const PORT = process.env.PORT || 5000;
