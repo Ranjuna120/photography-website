@@ -48,14 +48,7 @@ export default function Blog() {
         <Link
           to="/add-blog"
           className="read-more"
-          style={{
-            position: 'absolute',
-            right: '0',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            padding: '0.4rem 1rem',
-            fontSize: '0.9rem'
-          }}
+          style={{ position: 'absolute', right: '0', top: '50%', transform: 'translateY(-50%)', padding: '0.4rem 1rem', fontSize: '0.9rem' }}
         >
           ➕ Add New Blog
         </Link>
@@ -72,23 +65,24 @@ export default function Blog() {
               <h2>{post.title}</h2>
               <p className="blog-date">{new Date(post.date).toLocaleDateString()}</p>
 
+              {/* ✅ Display media thumbnail */}
+              {post.mediaUrl && (
+                post.mediaType === 'video' ? (
+                  <video src={`http://localhost:5000${post.mediaUrl}`} controls style={{ width: '100%', borderRadius: '8px', marginBottom: '0.5rem' }} />
+                ) : (
+                  <img src={`http://localhost:5000${post.mediaUrl}`} alt="Blog Media" style={{ width: '100%', borderRadius: '8px', marginBottom: '0.5rem' }} />
+                )
+              )}
+
               <button className="read-more" onClick={() => navigate(`/blog/${post._id}`)}>
                 Read More
               </button>
 
-              <button
-                className="read-more"
-                onClick={() => navigate(`/edit-blog/${post._id}`)}
-                style={{ backgroundColor: '#3b82f6', marginLeft: '0.5rem' }}
-              >
+              <button className="read-more" onClick={() => navigate(`/edit-blog/${post._id}`)} style={{ backgroundColor: '#3b82f6', marginLeft: '0.5rem' }}>
                 ✏️ Edit
               </button>
 
-              <button
-                className="read-more"
-                onClick={() => handleDelete(post._id)}
-                style={{ backgroundColor: '#ef4444', marginLeft: '0.5rem' }}
-              >
+              <button className="read-more" onClick={() => handleDelete(post._id)} style={{ backgroundColor: '#ef4444', marginLeft: '0.5rem' }}>
                 🗑️ Delete
               </button>
             </div>
