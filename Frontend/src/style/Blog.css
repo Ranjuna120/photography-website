@@ -3,26 +3,23 @@
   max-width: 1200px;
   margin: 0 auto;
   color: #f5f5f5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ✅ improved font */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .blog-header {
   text-align: center;
   margin-bottom: 2.5rem;
-   
 }
 
-
 :root {
-  --color-text-primary: #0f172a;   /* Default: dark text (for light theme) */
-  --color-text-secondary: #475569; /* Default: muted (for light theme) */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
 }
 
 body.dark {
-  --color-text-primary: #ffffff;   /* Light text (for dark theme) */
-  --color-text-secondary: #9ca3af; /* Muted gray for dark theme */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
 }
-
 
 .blog-header h1 {
   font-size: 2.8rem;
@@ -37,7 +34,7 @@ body.dark {
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ✅ slightly wider cards */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -47,6 +44,16 @@ body.dark {
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ✅ Added consistent image/video sizing for blog cards */
+.blog-card img,
+.blog-card video {
+  width: 100%;
+  height: 200px;          /* ✅ Fixed height for consistency */
+  object-fit: cover;      /* ✅ Crop excess to maintain ratio */
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
 .blog-card:hover {
@@ -95,7 +102,6 @@ body.dark {
   margin-bottom: 1.2rem;
 }
 
-/* ✅ Back link style (optional, if you use <Link> for 'Back to Blog') */
 .back-link {
   display: inline-block;
   margin-top: 1rem;
@@ -109,7 +115,6 @@ body.dark {
   color: #22c55e;
 }
 
-/* ✅ Responsive tweaks for smaller screens */
 @media (max-width: 600px) {
   .blog-header h1 {
     font-size: 2.2rem;
@@ -122,6 +127,12 @@ body.dark {
   }
   .read-more {
     padding: 0.4rem 1rem;
+  }
+
+  /* ✅ Responsive adjustment for small screens */
+  .blog-card img,
+  .blog-card video {
+    height: 160px;  /* slightly smaller for mobile */
   }
 }
 
@@ -146,3 +157,15 @@ body.dark {
 .blog-input:focus, .blog-textarea:focus {
   outline: 2px solid #4ade80;
 }
+
+/* BlogPost single page image/video — show entire content */
+.blog-container img,
+.blog-container video {
+  width: 100%;
+  max-height: 500px;    /* adjust as needed */
+  object-fit: contain;  /* ✅ Show the whole image/video */
+  border-radius: 8px;
+  background-color: #0f172a;  /* ✅ optional: background for gaps */
+  margin-bottom: 1.5rem;
+}
+
