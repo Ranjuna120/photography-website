@@ -9,15 +9,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Portfolio from './pages/Portfolio';
 import Portrait from './pages/Portrait';
-
-import Nature from './pages/Nature'; 
-import Event from './pages/Event'; 
-
+import Nature from './pages/Nature';
+import Event from './pages/Event';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
-import AddBlog from './pages/AddBlog';
 import AddOrEditBlog from './pages/AddOrEditBlog';
-
 
 function App() {
   return (
@@ -31,20 +27,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/portfolio" element={<Portfolio />} />
-
         <Route path="/portrait" element={<Portrait />} />
-        {/* <Route path="/portfolio/portrait" element={<Portrait />} /> */}
-
         <Route path="/nature" element={<Nature />} />
         <Route path="/event" element={<Event />} />
-
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
-        <Route path="/add-blog" element={<AddBlog />} />
-
-        <Route path="/add-blog" element={<AddOrEditBlog />} />
+        <Route path="/add-blog" element={<AddOrEditBlog />} /> {/* ✅ FIXED duplicate route */}
         <Route path="/edit-blog/:id" element={<AddOrEditBlog />} />
-
       </Routes>
       <Footer />
     </Router>
