@@ -87,7 +87,7 @@ export default function AddOrEditBlog() {
               type="file"
               accept="image/*,video/*"
               onChange={(e) => setMedia(e.target.files[0])}
-              style={{ color: '#f5f5f5' }}
+              // style={{ color: '#f5f5f5' }}
             />
 
             <button
