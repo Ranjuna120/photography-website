@@ -128,3 +128,66 @@ footer {
   margin-top: auto;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* ============================
+   ✅ Blog Page Specific Styles
+   ============================ */
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.blog-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-color); /* ✅ Use --text-color for automatic dark/light mode */
+}
+
+.blog-header p {
+  color: var(--footer-text);  /* ✅ or use var(--text-color) if you want full brightness */
+  font-size: 1.15rem;
+}
+
+.blog-card {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--nav-bg);
+}
+
+.blog-date {
+  color: var(--footer-text);
+  font-size: 0.9rem;
+}
+
+.read-more {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  padding: 0.4rem 1.2rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.read-more:hover {
+  background-color: var(--accent-hover);
+}
+
+.blog-content {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Responsive Blog Header */
+@media (max-width: 600px) {
+  .blog-header h1 {
+    font-size: 2rem;
+  }
+}
