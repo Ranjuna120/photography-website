@@ -2,33 +2,24 @@
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  color: #f5f5f5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* ✅ Removed conflicting variables here (no :root, no body background) */
 
 .blog-header {
   text-align: center;
   margin-bottom: 2.5rem;
 }
 
-:root {
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-}
-
-body.dark {
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #9ca3af;
-}
-
 .blog-header h1 {
   font-size: 2.8rem;
   margin-bottom: 0.6rem;
-  color: var(--color-text-secondary);
+  color: var(--text-color); /* ✅ use global --text-color from index.css */
 }
 
 .blog-header p {
-  color: var(--color-text-secondary);
+  color: var(--footer-text); /* ✅ secondary color for subheadings */
   font-size: 1.15rem;
 }
 
@@ -39,19 +30,19 @@ body.dark {
 }
 
 .blog-card {
-  background-color: #1f2937;
+  background-color: var(--card-bg);
   padding: 1.5rem;
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-/* ✅ Added consistent image/video sizing for blog cards */
 .blog-card img,
 .blog-card video {
   width: 100%;
-  height: 200px;          /* ✅ Fixed height for consistency */
-  object-fit: cover;      /* ✅ Crop excess to maintain ratio */
+  height: 200px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
@@ -59,25 +50,25 @@ body.dark {
 .blog-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
-  background-color: #111827;
+  background-color: var(--nav-bg);
 }
 
 .blog-card h2 {
   font-size: 1.6rem;
   margin-bottom: 0.6rem;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 .blog-date {
   font-size: 0.9rem;
-  color: #9ca3af;
+  color: var(--footer-text);
   margin-bottom: 1rem;
 }
 
 .read-more {
   margin-top: 1.2rem;
   padding: 0.5rem 1.3rem;
-  background-color: #4ade80;
+  background-color: var(--accent-color);
   color: #0f172a;
   border: none;
   border-radius: 5px;
@@ -87,14 +78,14 @@ body.dark {
 }
 
 .read-more:hover {
-  background-color: #22c55e;
+  background-color: var(--accent-hover);
   transform: scale(1.05);
 }
 
 .blog-content {
   font-size: 1.15rem;
   line-height: 1.8;
-  color: #d1d5db;
+  color: var(--text-color);
   margin-bottom: 2.5rem;
 }
 
@@ -105,14 +96,14 @@ body.dark {
 .back-link {
   display: inline-block;
   margin-top: 1rem;
-  color: #4ade80;
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .back-link:hover {
-  color: #22c55e;
+  color: var(--accent-hover);
 }
 
 @media (max-width: 600px) {
@@ -128,11 +119,9 @@ body.dark {
   .read-more {
     padding: 0.4rem 1rem;
   }
-
-  /* ✅ Responsive adjustment for small screens */
   .blog-card img,
   .blog-card video {
-    height: 160px;  /* slightly smaller for mobile */
+    height: 160px;
   }
 }
 
@@ -144,7 +133,8 @@ body.dark {
   margin: 0 auto;
 }
 
-.blog-input, .blog-textarea {
+.blog-input,
+.blog-textarea {
   width: 100%;
   padding: 0.8rem;
   border-radius: 4px;
@@ -154,18 +144,17 @@ body.dark {
   font-size: 1rem;
 }
 
-.blog-input:focus, .blog-textarea:focus {
-  outline: 2px solid #4ade80;
+.blog-input:focus,
+.blog-textarea:focus {
+  outline: 2px solid var(--accent-color);
 }
 
-/* BlogPost single page image/video — show entire content */
 .blog-container img,
 .blog-container video {
   width: 100%;
-  max-height: 500px;    /* adjust as needed */
-  object-fit: contain;  /* ✅ Show the whole image/video */
+  max-height: 500px;
+  object-fit: contain;
   border-radius: 8px;
-  background-color: #0f172a;  /* ✅ optional: background for gaps */
+  background-color: #0f172a;
   margin-bottom: 1.5rem;
 }
-
