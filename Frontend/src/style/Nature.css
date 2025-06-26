@@ -40,3 +40,110 @@
 .nature-gallery img:hover {
   transform: scale(1.05);
 }
+
+.nature-page {
+  padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.nature-page h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--nav-hover);
+  border-bottom: 2px solid var(--nav-hover);
+  padding-bottom: 0.5rem;
+}
+
+.nature-page p.description {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--footer-text);
+}
+
+.nature-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.nature-gallery img {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(231, 222, 222, 0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.nature-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* 🌟 Lightbox Styles */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox-img {
+  width: auto;
+  height: 80vh; /* ✅ Consistent height for all images */
+  max-width: 90vw;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+
+.close {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: var(--accent-color);
+}
+
+.prev,
+.next {
+  position: fixed;
+  top: 50%;
+  font-size: 50px;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1001;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+  color: var(--accent-color);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
