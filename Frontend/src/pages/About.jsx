@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import '../style/About.css';
-import aboutImage from '../images/about.jpg'; // Add a relevant image to 'src/images'
+import aboutMe from '../images/aboutMe.jpg'; // Add a relevant image to 'src/images'
 
 export default function About() {
 
@@ -22,7 +22,7 @@ export default function About() {
         </div>
 
         <div className="about-image-container">
-          <img src={aboutImage} alt="About" className="about-image" />
+          <img src={aboutMe} alt="About" className="about-image" />
         </div>
       </div>
     </section>
