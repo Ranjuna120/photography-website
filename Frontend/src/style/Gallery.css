@@ -1,4 +1,4 @@
-/* style/Gallery.css */
+style/Gallery.css
 
 .gallery-section {
   background-color: var(--bg-color);
@@ -9,7 +9,7 @@
 }
 
 .gallery-title {
-  font-size: 1.875rem; /* text-3xl */
+  font-size: 1.875rem;  
   font-weight: 700;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -51,7 +51,7 @@
 
 .gallery-item img {
   width: 100%;
-  height: 12rem; /* h-48 */
+  height: 12rem; 
   object-fit: cover;
 }
 
@@ -60,13 +60,13 @@
 }
 
 .gallery-item h3 {
-  font-size: 1.25rem; /* text-xl */
+  font-size: 1.25rem; 
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .gallery-item p {
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;  
   color: var(--text-color);
   opacity: 0.8;
 }
