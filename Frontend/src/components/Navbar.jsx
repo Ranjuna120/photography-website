@@ -10,13 +10,13 @@ export default function Navbar() {
       <h1 className="logo">PhotoGallery</h1>
       <div className="links">
         <Link to="/">Home</Link>
-        <Link to="/gallery">Gallery</Link>
+        {/* <Link to="/gallery">Gallery</Link> */}
         <Link to="/about">About</Link>
         <Link to="/portfolio">Portfolio</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/blog">Blog</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        {/* <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link> */}
       </div>
       <div className="theme-toggle">
         <button
