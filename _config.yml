@@ -1,0 +1,13 @@
+exclude:
+  - node_modules
+  - Frontend/node_modules
+  - Backend/node_modules
+  - Backend/
+  - Frontend/src/
+  - Frontend/public/
+  - Frontend/package.json
+  - Frontend/package-lock.json
+  - Frontend/yarn.lock
+  - Frontend/README.md
+  - Frontend/.gitignore
+  - Frontend/.env
