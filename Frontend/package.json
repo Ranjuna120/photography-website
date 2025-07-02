@@ -17,7 +17,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-modal-image": "^2.6.0",
-    "react-router-dom": "^6.23.0"
+    "react-router-dom": "^6.30.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",
