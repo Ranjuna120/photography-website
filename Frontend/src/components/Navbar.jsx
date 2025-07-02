@@ -17,6 +17,7 @@ export default function Navbar() {
         <Link to="/blog">Blog</Link>
         {/* <Link to="/login">Login</Link>
         <Link to="/register">Register</Link> */}
+        {/* <Link to="/admin">Admin</Link> */}
       </div>
       <div className="theme-toggle">
         <button
