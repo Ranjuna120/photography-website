@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/Home.css';
 
@@ -24,14 +24,28 @@ import img19 from '../images/img19.jpg';
 
 import heroImg from '../images/heroImg.jpg'; // NEW featured image
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10,img11,
-  img12,img13,img14,img15,img16,img17,img18,img19,
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11,
+  img12, img13, img14, img15, img16, img17, img18, img19,
 ];
+
+// Spinner component
+function Spinner() {
+  return <div className="spinner"></div>;
+}
 
 export default function Home() {
   const [selectedImg, setSelectedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState(0);
   const navigate = useNavigate();
+
+  // Track image loading
+  useEffect(() => {
+    if (loadedImages === images.length) {
+      setTimeout(() => setLoading(false), 400); // small delay for effect
+    }
+  }, [loadedImages]);
 
   const openModal = (index) => {
     setSelectedImg(images[index]);
@@ -70,17 +84,36 @@ export default function Home() {
         <p>Capturing life’s beauty through the lens.</p>
       </header>
 
-      {/* Existing Gallery */}
-      <div className="gallery-grid">
-        {images.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt={`Gallery ${index + 1}`}
-            className="gallery-image"
-            onClick={() => openModal(index)}
-          />
-        ))}
+      {/* Gallery with Spinner */}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="gallery-grid">
+          {images.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Gallery ${index + 1}`}
+              className="gallery-image fade-in"
+              onClick={() => openModal(index)}
+              onLoad={() => setLoadedImages((count) => count + 1)}
+              style={{ animationDelay: `${index * 0.07}s` }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Preload images for spinner logic */}
+      <div style={{ display: 'none' }}>
+        {loading &&
+          images.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt=""
+              onLoad={() => setLoadedImages((count) => count + 1)}
+            />
+          ))}
       </div>
 
       {selectedImg && (
@@ -91,14 +124,6 @@ export default function Home() {
           <button className="next" onClick={nextImage}>❯</button>
         </div>
       )}
-
-      {/* ✅ About Section */}
-      {/* <section className="about">
-        <h2>About Me</h2>
-        <p>I’m Rivith Ranjuna, a passionate photographer specializing in portraits, nature, and events. 
-          I believe photography tells stories the eye can’t always see.</p>
-        <button onClick={() => navigate('/contact')}>Contact Me</button>
-      </section> */}
     </div>
   );
 }
