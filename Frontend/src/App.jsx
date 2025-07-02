@@ -15,6 +15,8 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import AddOrEditBlog from './pages/AddOrEditBlog';
 
+import AdminDashboard from './pages/AdminDashboard';
+
 function App() {
   return (
     <Router>
@@ -34,6 +36,8 @@ function App() {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/add-blog" element={<AddOrEditBlog />} /> {/* ✅ FIXED duplicate route */}
         <Route path="/edit-blog/:id" element={<AddOrEditBlog />} />
+
+         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </Router>
