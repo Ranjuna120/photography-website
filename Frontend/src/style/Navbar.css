@@ -5,6 +5,7 @@
   background-color: var(--nav-bg);
   color: var(--nav-text);
   padding: 1rem 2rem;
+  position: relative;
 }
 
 .logo {
@@ -12,18 +13,47 @@
   font-weight: bold;
 }
 
+
 .links {
   display: flex;
-  gap: 1.5rem;
+  gap: 24px;
+  transition: max-height 0.4s;
 }
 
 .links a {
-  color: var(--nav-text);
-  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s;
+  padding: 4px 0;
 }
 
-.links a:hover {
-  color: var(--nav-hover);
+.links a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #ff9800;
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.links a:hover,
+.links a:focus {
+  color: #ff9800;
+}
+
+.links a:hover::after,
+.links a:focus::after {
+  width: 100%;
+}
+
+.theme-toggle {
+  display: flex;
+  gap: 8px;
 }
 
 .theme-toggle button {
@@ -34,7 +64,7 @@
   color: var(--nav-text);
   border-radius: 0.25rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .theme-toggle button:hover,
@@ -42,4 +72,57 @@
   background-color: var(--nav-hover);
   color: #fff;
   border-color: var(--nav-hover);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 16px;
+}
+
+.menu-toggle .bar {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+  .links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--navbar-bg, #222);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .links.open {
+    max-height: 300px;
+    padding-bottom: 12px;
+  }
+
+   .links a {
+    padding: 14px 24px;
+    border-bottom: 1px solid #333;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .theme-toggle {
+    margin-left: auto;
+  }
 }
