@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaTwitter, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import '../style/Contact.css';
 
 export default function Contact() {
@@ -39,7 +39,7 @@ export default function Contact() {
       const data = await res.json();
 
       if (res.ok) {
-        setSuccess(data.message);
+        setSuccess(data.message || 'Message sent successfully!');
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
         setError(data.error || 'Submission failed');
@@ -56,15 +56,46 @@ export default function Contact() {
       </div>
 
       <div className="contact-content">
+        {/* Map */}
+        <div className="contact-map">
+          <iframe
+            title="Google Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.01376927841!2d79.773705!3d6.927079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2595d2b2b2b2b%3A0x2b2b2b2b2b2b2b2b!2sColombo!5e0!3m2!1sen!2slk!4v1680000000000!5m2!1sen!2slk"
+            width="100%"
+            height="220"
+            style={{ border: 0, borderRadius: '12px', marginBottom: '1.5rem' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
         <div className="contact-info">
           <h2>Contact Us</h2>
           <p>
-             For speaking events, interviews, print or licensing requests:{' '}
-             <a href="mailto:rivithranjuna60@gmail.com" className="email-link">
+            <FaMapMarkerAlt style={{ marginRight: 6 }} />
+            Colombo, Sri Lanka
+          </p>
+          <p>
+            <FaPhoneAlt style={{ marginRight: 6 }} />
+            <a href="tel:+94775044731">+94 77 504 4731</a>
+          </p>
+          <p>
+            <FaWhatsapp style={{ marginRight: 6, color: '#25D366' }} />
+            <a
+              href="https://wa.me/94715868009"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat on WhatsApp
+            </a>
+          </p>
+          <p>
+            For speaking events, interviews, print or licensing requests:{' '}
+            <a href="mailto:rivithranjuna60@gmail.com" className="email-link">
               rivithranjuna60@gmail.com
-             </a>
-         </p>
-
+            </a>
+          </p>
           <div className="social-links">
             <p>Connect with me on Social</p>
             <div className="social-icons">
