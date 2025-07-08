@@ -1,7 +1,11 @@
 <p align="center">
-  <img width="100" height="100" alt="Motion logo" src="https://github.com/user-attachments/assets/00d6d1c3-72c4-4c2f-a664-69da13182ffc" />
+  <img width="42" height="42" alt="Motion logo" src="https://github.com/user-attachments/assets/00d6d1c3-72c4-4c2f-a664-69da13182ffc" />
 </p>
 <h1 align="center">Motion for React</h1>
+<h3 align="center">
+  An open source, production-ready animation library
+</h3>
+<p align="center">Previously Framer Motion. Also available for <a href="https://github.com/motiondivision/motion/tree/main/packages/motion">JavaScript</a> and <a href="https://github.com/motiondivision/motion-vue">Vue</a></p>
 
 <br>
 
@@ -12,13 +16,11 @@
   <a href="https://www.npmjs.com/package/framer-motion" target="_blank">
   <img src="https://img.shields.io/npm/dm/framer-motion.svg?style=flat-square" />
   </a>
-  <a href="https://twitter.com/motiondotdev" target="_blank">
-  <img src="https://img.shields.io/twitter/follow/framer.svg?style=social&label=Follow"  />
+  <a href="https://twitter.com/mattgperry" target="_blank">
+  <img src="https://img.shields.io/twitter/follow/mattgperry.svg?style=social&label=Follow"  />
   </a>
 </p>
 
-<br>
-<hr>
 <br>
 
 Motion for React is an open source, production-ready library that’s designed for all creative developers.
@@ -52,21 +54,46 @@ It does all this:
 
 ### 🐇 Quick start
 
-Install `motion` via your package manager:
-
-```
+```bash
 npm install motion
 ```
-
-Then import the `motion` component:
 
 ```jsx
 import { motion } from "motion/react"
 
-export function Component({ isVisible }) {
-    return <motion.div animate={{ opacity: isVisible ? 1 : 0 }} />
+function Component() {
+    return <motion.div animate={{ x: 100 }} />
 }
 ```
+
+Get started with [Motion for React](https://motion.dev/docs/react-quick-start).
+
+## 🎨 Studio
+
+![Video of bezier curve editing](https://framerusercontent.com/images/KO5dnHOUSNGb9S73p1J7nLhoFI.gif)
+
+Motion Studio is a versatile suite of developer tools allowing you to:
+
+-   Visually edit CSS and Motion easing curves in VS Code
+-   Generate CSS springs with LLMs
+-   Load Motion docs into your LLM
+
+Get started with [Motion Studio](https://motion.dev/docs/tools-quick-start).
+
+## 🎓 Examples
+
+[Motion Examples](https://examples.motion.dev/react) offers 100s of free and Motion+ examples for beginners and advanced users alike. Easy copy/paste code to kickstart your next project.
+
+## ⚡️ Motion+
+
+[Motion+](https://motion.dev/plus) is a one-time fee, lifetime membership that unlocks over 100 premium examples, early access, powerful Studio tools, a private Discord, and exclusive APIs like:
+
+-   Cursor
+-   Ticker
+-   AnimateNumber
+-   splitText
+
+[Get Motion+](https://motion.dev/plus)
 
 ### 💎 Contribute
 
