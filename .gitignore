@@ -113,3 +113,4 @@ production/
 # Local development
 local.json
 config/local.json
+.vercel
