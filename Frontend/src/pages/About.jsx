@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import '../style/About.css';
-import aboutMe from '../images/aboutMe.jpg'; // Add a relevant image to 'src/images'
+import aboutMe from '../images/aboutMe.jpg';  
 
 export default function About() {
 
